@@ -5,5 +5,5 @@ RUN go build -o app .
 
 FROM alpine:latest  
 RUN apk --no-cache add ca-certificates
-COPY --from=build /go/src/github.com/eveld/waypoint-test/app ./
-CMD ["./app"]  
+COPY --from=build /go/src/github.com/eveld/waypoint-test/app /app
+CMD ["/app"]
