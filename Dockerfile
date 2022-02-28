@@ -1,9 +1,9 @@
 FROM golang:1.16 AS build
-COPY main.go ./
-COPY go.mod ./
+WORKDIR /go/src/github.com/eveld/waypoint-test/
+COPY . ./
 RUN go build -o app .
 
 FROM alpine:latest  
 RUN apk --no-cache add ca-certificates
-COPY --from=build /go/src/app ./
+COPY --from=build /go/src/github.com/eveld/waypoint-test/app ./
 CMD ["./app"]  
