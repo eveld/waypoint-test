@@ -26,19 +26,11 @@ trigger:
 	waypoint trigger create \
       -project=test \
       -app=test \
-      -name=trigger-test-deploy \
-      -op=deploy
+      -name=trigger-test-build \
+      -op=build
 
 build:
-	waypoint build --plain
-
-deploy:
-	waypoint deploy --plain --release=false
-
-release:
-	LOG_LEVEL=debug waypoint release --plain
-
-plugin:
+	waypoint build -push=false --plain
 
 consul:
 	consul agent -dev
